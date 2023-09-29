@@ -91,6 +91,27 @@
   @media screen and (max-width: 900px) {
     margin-top: 2rem;
   }
+
+  .app__skills-exp-show {
+    display: flex;
+    flex-direction: row;
+
+    .app__skils-stepper-show {
+      display: flex;
+      flex-direction: column;
+
+      .vertical-divider {
+        width: 1px;
+        height: 100%;
+        background-color: #ccc;
+        margin: 0 10px;
+      }
+    }
+
+    .app_skills-exp-details {
+      margin-left: 0.5rem;
+    }
+  }
 }
 
 .app__skills-exp-item {
