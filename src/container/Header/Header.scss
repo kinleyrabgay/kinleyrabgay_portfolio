@@ -173,10 +173,11 @@
   align-items: flex-end;
   position: relative;
 
-  img {
-    width: 100%;
-    object-fit: contain;
-    z-index: 1;
+  .app__header-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
   }
 
   .overlay_circle {

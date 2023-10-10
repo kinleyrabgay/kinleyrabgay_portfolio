@@ -47,6 +47,7 @@ const Header = () => {
         className='app__header-img'
       >
         {/* <img src={images.demo_profile} alt='profile_bg' /> */}
+        <button className='app__header-button'>Hire me</button>
         <motion.img
           whileInView={{ scale: [0, 1] }}
           transition={{ duration: 1, ease: 'easeInOut' }}
