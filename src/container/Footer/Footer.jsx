@@ -8,31 +8,33 @@ import "./Footer.scss";
 const Footer = () => {
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
-    message: "",
+    company: "",
+    feedback: "",
   });
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [shouldDisable, setShouldDisable] = useState(true);
 
-  const { username, email, message } = formData;
+  const { username, company, feedback } = formData;
 
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+    setShouldDisable(false);
   };
 
   const handleSubmit = () => {
     setLoading(true);
 
-    const contact = {
-      _type: "contact",
+    const testimonials = {
+      _type: "testimonials",
       name: formData.username,
-      email: formData.email,
-      message: formData.message,
+      company: formData.company,
+      feedback: formData.feedback,
     };
 
     client
-      .create(contact)
+      .create(testimonials)
       .then(() => {
         setLoading(false);
         setIsFormSubmitted(true);
@@ -46,7 +48,7 @@ const Footer = () => {
 
       <div className="app__footer-cards">
         <div className="app__footer-card ">
-          <img src={images.message} alt="email" />
+          <img src={images.message} alt="feedback" />
           <a href="mailto:fsd.rabgay@gmail.com" className="p-text">
             fsd.rabgay@gmail.com
           </a>
@@ -68,29 +70,32 @@ const Footer = () => {
               name="username"
               value={username}
               onChange={handleChangeInput}
+              required
             />
           </div>
           <div className="app__flex">
             <input
               className="p-text"
-              type="email"
-              placeholder="Your Email"
-              name="email"
-              value={email}
+              type="text"
+              placeholder="Your Work Place"
+              name="company"
+              value={company}
               onChange={handleChangeInput}
+              required
             />
           </div>
           <div>
             <textarea
               className="p-text"
-              placeholder="Your Message"
-              value={message}
-              name="message"
+              placeholder="Your feedback"
+              value={feedback}
+              name="feedback"
               onChange={handleChangeInput}
+              required
             />
           </div>
-          <button type="button" className="p-text" onClick={handleSubmit}>
-            {!loading ? "Send Message" : "Sending..."}
+          <button type="button" className="p-text" onClick={handleSubmit} disabled={shouldDisable}>
+            {!loading ? "Send feedback" : "Sending..."}
           </button>
         </div>
       ) : (

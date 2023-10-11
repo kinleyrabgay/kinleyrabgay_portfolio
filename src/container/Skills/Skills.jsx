@@ -10,6 +10,7 @@ import './Skills.scss';
 const Skills = () => {
   const [experiences, setExperiences] = useState([]);
   const [skills, setSkills] = useState([]);
+  const [duration, setDuration] = useState(1);
 
   useEffect(() => {
     const query = '*[_type == "experiences"]';
@@ -17,12 +18,24 @@ const Skills = () => {
 
     client.fetch(query).then((data) => {
       setExperiences(data);
+      console.log(data);
     });
 
     client.fetch(skillsQuery).then((data) => {
       setSkills(data);
     });
   }, []);
+
+  const getDuration = (startDate, endDate) => {
+    const currentDate = new Date();
+    const start = new Date(startDate);
+    const end = endDate ? new Date(endDate) : currentDate;
+  
+    const duration = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
+    const durationText = duration > 1 ? `${duration} months` : `${duration} month`;
+  
+    return durationText;
+  };
 
   return (
     <>
@@ -54,6 +67,10 @@ const Skills = () => {
                 <p className='bold-text'>{experience.year}</p>
               </div>
               <motion.div className='app__skills-exp-works'>
+                <div className='app__skills-exp-works-title'>
+                  <p className='bold-text-company'>{experience.company}</p>
+                  <p className='app__skils-duration'>{getDuration(experience.start, experience.end)}</p>
+                </div>
                 {experience.works.map((work) => (
                   <>
                     <motion.div
