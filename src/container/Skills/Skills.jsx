@@ -18,7 +18,6 @@ const Skills = () => {
 
     client.fetch(query).then((data) => {
       setExperiences(data);
-      console.log(data);
     });
 
     client.fetch(skillsQuery).then((data) => {
@@ -85,7 +84,7 @@ const Skills = () => {
                         <div className='app__skils-stepper-show'>
                           <img
                             src={images.history}
-                            alt='profile_bg'
+                            alt='history'
                             width={20}
                             height={20}
                           />
