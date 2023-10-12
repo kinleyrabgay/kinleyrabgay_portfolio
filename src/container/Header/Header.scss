@@ -38,7 +38,7 @@
 }
 
 .app__header-info {
-  flex: 0.65;
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -54,9 +54,80 @@
 .app__header-badge {
   width: 100%;
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
+  justify-content: flex-start;
+  align-items: flex-start;
   flex-direction: column;
+
+  .app__header-greet {
+    font-size: 20px;
+    font-family: ui-sans-serif, system-ui;
+  }
+
+  .app__header-word {
+    margin-top: 0.5rem;
+    font-size: 48px;
+    font-weight: 600;
+    display: inline-block;
+    width: fit-content;
+    font-family: ui-sans-serif, system-ui;
+
+    .app__word-letter {
+      display: inline-block;
+      transition: transform 0.2s;
+      --tw-text-opacity: 1;
+      color: rgb(26 142 156 / var(--tw-text-opacity));
+
+      &:hover {
+        transform: translateY(-10px);
+        cursor: pointer;
+      }
+    }
+
+    @media (max-width: 768px) {
+      font-size: 24px;
+      .app__word-letter {
+        font-size: 30px;
+      }
+    }
+  }
+
+  .app__gt-animation {
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+    --tw-text-opacity: 1;
+    color: rgb(26 142 156 / var(--tw-text-opacity));
+
+    .app__gt {
+      font-size: 2rem;
+      font-weight: 800;
+    }
+
+    .app__word-typeEffect {
+      font-size: 18px;
+      font-weight: 700;
+      margin-left: 0.7rem;
+      font-family: ui-sans-serif, system-ui;
+    }
+
+    .app__cursor {
+      font-size: 1.5em;
+      animation: blink 0.7s infinite;
+      font-family: ui-sans-serif, system-ui;
+    }
+
+    @keyframes blink {
+      0% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+  }
 
   .badge-cmp,
   .tag-cmp {
@@ -65,18 +136,24 @@
     border-radius: 15px;
     flex-direction: row;
     width: auto;
-
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   }
 
   .tag-cmp {
     flex-direction: column;
     margin-top: 3rem;
+    
 
-    p {
-      width: 100%;
-      text-transform: uppercase;
-      text-align: right;
+    .app__hire-button {
+      --tw-text-opacity: 1;
+      border: 2px solid rgb(26 142 156 / var(--tw-text-opacity));
+      color: rgba(51,51,51,.71);
+      font-weight: 400;
+      font-family: ui-sans-serif, system-ui;
+      font-size: 18px;
+      padding: 0.5rem 1.2rem;
+      cursor: pointer;
+      background-color: transparent;
     }
   }
 
